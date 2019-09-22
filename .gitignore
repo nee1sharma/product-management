@@ -1,3 +1,9 @@
 
 /target/
 .classpath
+.project
+.settings/
+
+
+.idea/
+product-management.iml
