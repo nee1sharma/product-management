@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.product.management.model.Product;
 import com.product.management.repository.ProductRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
@@ -23,10 +25,7 @@ public class ProductServiceImpl implements ProductService {
 
 		Optional<Product> optional = productRepository.findById(productId);
 		optional.orElseThrow(() -> new ProductNotFoundException("product not found with " + productId));
-		if (optional.isPresent()) {
-			return optional.get().getPrice();
-		}
-		return productId;
+		return optional.map(Product::getPrice).orElse(productId);
 
 	}
 	public Optional<Product> getProductById(Long productId) {
