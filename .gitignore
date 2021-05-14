@@ -3,7 +3,7 @@
 .classpath
 .project
 .settings/
-
+/logs/
 
 .idea/
 product-management.iml
